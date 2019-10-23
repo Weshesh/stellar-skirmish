@@ -246,8 +246,6 @@ class Main {
 
         shape.on('mousedown', function (event) {
             if (!shape.children.length) {
-                shape.tint = 0x85c7f2;
-
                 const player = shape.clone();
                 player.tint = 0x85c7f2;
                 player.scale.set(0.7);
@@ -258,6 +256,8 @@ class Main {
                 player.fill.alpha = 1;
 
                 shape.addChild(player);
+
+                shape.tint = 0x85c7f2;
             } else {
                 shape.tint = 0xcccccc;
                 shape.children.pop();
