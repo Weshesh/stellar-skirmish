@@ -67,6 +67,33 @@ class Main {
         mesh.position.set(0, 0, 0);
         this.scene.add(mesh);
 
+        const mesh2 = new Mesh(geometry, material);
+        mesh2.position.set(-43, -70, 0);
+        this.scene.add(mesh2);
+
+        const mesh3 = new Mesh(geometry, material);
+        mesh3.position.set(0 - 43, 70, 0);
+        this.scene.add(mesh3);
+
+        //
+        const mesh4 = new Mesh(geometry, material);
+        mesh4.position.set(+43, 70, 0);
+        this.scene.add(mesh4);
+
+
+        const mesh5 = new Mesh(geometry, material);
+        mesh5.position.set(43, -70, 0);
+        this.scene.add(mesh5);
+
+
+        const mesh6 = new Mesh(geometry, material);
+        mesh6.position.set(86, 0, 0);
+        this.scene.add(mesh6);
+
+        const mesh7 = new Mesh(geometry, material);
+        mesh7.position.set(-86, 0, 0);
+        this.scene.add(mesh7);
+
         // Animate loop
         this.animate();
     }
