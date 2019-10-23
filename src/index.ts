@@ -27,7 +27,7 @@ class Main {
 
     public async init() {
         this.scene = new Scene();
-        this.scene.background = new Color(0x2274a5);
+        this.scene.background = new Color(0xffffff);
 
         this.camera = new PerspectiveCamera(100, window.innerWidth / window.innerHeight, 10, 1000);
         this.camera.position.z = 300;
@@ -48,8 +48,6 @@ class Main {
     }
 
     private getTextGroup(): Object3D {
-
-        // Text
         const textGeo = new TextGeometry('Stellar Skirmish', {
             font: new Font(BoldFont),
             size: 15,
@@ -57,18 +55,21 @@ class Main {
         });
 
         textGeo.center();
-        const textMaterial = new MeshBasicMaterial({color: 0xffffff});
+        const textMaterial = new MeshBasicMaterial({color: 0xcccccc});
         const textMesh = new Mesh(textGeo, textMaterial);
 
         textMesh.position.set(0, 50, 0);
 
 
-        const group = new Object3D();
-        group.add(textMesh);
-        group.position.set(0,0,0);
+        // Add text object group
+        const textGroup = new Object3D();
+        textGroup.add(textMesh);
+        console.log(this.renderer.domElement.height/2);
+        textGroup.position.set(0,this.renderer.domElement.height/2 - 250,0);
 
-        return group;
+        return textGroup;
     }
+
     public animate() {
         requestAnimationFrame(this.animate.bind(this));
 
