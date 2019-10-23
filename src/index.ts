@@ -1,17 +1,16 @@
 import {
-    DirectionalLight,
-    FontLoader,
+    Color,
+    Font,
     Mesh,
     MeshBasicMaterial,
+    Object3D,
     PerspectiveCamera,
     Scene,
+    Shape,
+    ShapeGeometry,
     TextGeometry,
     WebGLRenderer,
-    Font,
-    Object3D,
-    Color,
 } from "three";
-
 // Fonts
 import BoldFont from "../public/fonts/BoosterNextFY-Bold_Bold.json";
 
@@ -43,6 +42,31 @@ class Main {
         // Text group
         this.scene.add(this.getTextGroup());
 
+
+        // Shape
+        const x = 0, y = 0;
+
+        const hexRadius = 40;
+        const hexHeight = 25;
+        const sideLength = 40;
+        const hexRectangleHeight = sideLength + 2 * hexHeight;
+        const hexRectangleWidth = 2 * hexRadius;
+
+        const heartShape = new Shape();
+        heartShape.moveTo(x + hexRadius, y);
+        heartShape.lineTo(x + hexRectangleWidth, y + hexHeight);
+        heartShape.lineTo(x + hexRectangleWidth, y + hexHeight + sideLength);
+        heartShape.lineTo(x + hexRadius, y + hexRectangleHeight);
+        heartShape.lineTo(x, y + sideLength + hexHeight);
+        heartShape.lineTo(x, y + hexHeight);
+
+
+        const geometry = new ShapeGeometry(heartShape);
+        const material = new MeshBasicMaterial({color: 0x000000});
+        const mesh = new Mesh(geometry, material);
+        mesh.position.set(0, 0, 0);
+        this.scene.add(mesh);
+
         // Animate loop
         this.animate();
     }
@@ -64,8 +88,7 @@ class Main {
         // Add text object group
         const textGroup = new Object3D();
         textGroup.add(textMesh);
-        console.log(this.renderer.domElement.height/2);
-        textGroup.position.set(0,this.renderer.domElement.height/2 - 250,0);
+        textGroup.position.set(0, this.renderer.domElement.height / 2 - 250, 0);
 
         return textGroup;
     }
