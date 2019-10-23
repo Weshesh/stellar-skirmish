@@ -213,8 +213,8 @@ class Main {
         const hexRectangleWidth = 2 * hexRadius;
 
         const shape = new PIXI.Graphics();
-        shape.tint = 0xeaedec;
         shape.lineStyle(4, 0xeaedec);
+        shape.tint = 0xeaedec;
         shape.moveTo(x + hexRadius, y);
         shape.lineTo(x + hexRectangleWidth, y + hexHeight);
         shape.lineTo(x + hexRectangleWidth, y + hexHeight + sideLength);
@@ -239,18 +239,33 @@ class Main {
         ]);
 
         shape.on('pointerover', function (event) {
-            if (shape.tint !== 8767474) {
+            if (shape.tint !== 8767474 && !shape.children.length) {
                 shape.tint = 0xcccccc;
             }
         });
 
         shape.on('mousedown', function (event) {
-            shape.tint = 0x85c7f2;
+            if (!shape.children.length) {
+                shape.tint = 0x85c7f2;
+
+                const player = shape.clone();
+                player.tint = 0x85c7f2;
+                player.scale.set(0.7);
+                player.position.x += 12.5;
+                player.position.y += 13;
+
+                // player.fill.color =  0x000000;
+                player.fill.alpha = 1;
+
+                shape.addChild(player);
+            } else {
+                shape.tint = 0xcccccc;
+                shape.children.pop();
+            }
         });
 
         shape.on('pointerout', function (event) {
-            console.log(shape.tint);
-            if (shape.tint !== 8767474) {
+            if (shape.tint !== 8767474 && !shape.children.length) {
                 shape.tint = 0xeaedec;
             }
         });
