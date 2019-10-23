@@ -44,6 +44,54 @@ class Main {
 
 
         // Shape
+
+        // mesh.position.set(0, 0, 0);
+        const hexagon = this.getHexagon();
+        this.scene.add(hexagon);
+
+        // Center
+        const hexagon_cnt_1 = this.getHexagon();
+        hexagon_cnt_1.position.set(-86, 0, 0);
+        this.scene.add(hexagon_cnt_1);
+
+        const hexagon_cnt_2 = this.getHexagon();
+        hexagon_cnt_2.position.set(86, 0, 0);
+        this.scene.add(hexagon_cnt_2);
+
+        // Top
+
+        const hexagon_4 = this.getHexagon();
+        hexagon_4.position.set(43 + 86, 70, 0);
+        this.scene.add(hexagon_4);
+
+        const hexagon_5 = this.getHexagon();
+        hexagon_5.position.set(-43 -86, 70, 0);
+        this.scene.add(hexagon_5);
+
+        const hexagon_2 = this.getHexagon();
+        hexagon_2.position.set(43, 70, 0);
+        this.scene.add(hexagon_2);
+
+        const hexagon3 = this.getHexagon();
+        hexagon3.position.set(-43, 70, 0);
+        this.scene.add(hexagon3);
+
+        // Bottom
+        const hexagon4 = this.getHexagon();
+        hexagon4.position.set(-43, -70, 0);
+        this.scene.add(hexagon4);
+
+        const hexagon5 = this.getHexagon();
+        hexagon5.position.set(43, -70, 0);
+        this.scene.add(hexagon5);
+
+
+
+        // Animate loop
+        this.animate();
+    }
+
+    private getHexagon() {
         const x = 0, y = 0;
 
         const hexRadius = 40;
@@ -52,50 +100,22 @@ class Main {
         const hexRectangleHeight = sideLength + 2 * hexHeight;
         const hexRectangleWidth = 2 * hexRadius;
 
-        const heartShape = new Shape();
-        heartShape.moveTo(x + hexRadius, y);
-        heartShape.lineTo(x + hexRectangleWidth, y + hexHeight);
-        heartShape.lineTo(x + hexRectangleWidth, y + hexHeight + sideLength);
-        heartShape.lineTo(x + hexRadius, y + hexRectangleHeight);
-        heartShape.lineTo(x, y + sideLength + hexHeight);
-        heartShape.lineTo(x, y + hexHeight);
+        //
+        const shape = new Shape();
+        shape.moveTo(x + hexRadius, y);
+        shape.lineTo(x + hexRectangleWidth, y + hexHeight);
+        shape.lineTo(x + hexRectangleWidth, y + hexHeight + sideLength);
+        shape.lineTo(x + hexRadius, y + hexRectangleHeight);
+        shape.lineTo(x, y + sideLength + hexHeight);
+        shape.lineTo(x, y + hexHeight);
 
 
-        const geometry = new ShapeGeometry(heartShape);
+        const geometry = new ShapeGeometry(shape);
+        geometry.center();
         const material = new MeshBasicMaterial({color: 0x000000});
         const mesh = new Mesh(geometry, material);
-        mesh.position.set(0, 0, 0);
-        this.scene.add(mesh);
 
-        const mesh2 = new Mesh(geometry, material);
-        mesh2.position.set(-43, -70, 0);
-        this.scene.add(mesh2);
-
-        const mesh3 = new Mesh(geometry, material);
-        mesh3.position.set(0 - 43, 70, 0);
-        this.scene.add(mesh3);
-
-        //
-        const mesh4 = new Mesh(geometry, material);
-        mesh4.position.set(+43, 70, 0);
-        this.scene.add(mesh4);
-
-
-        const mesh5 = new Mesh(geometry, material);
-        mesh5.position.set(43, -70, 0);
-        this.scene.add(mesh5);
-
-
-        const mesh6 = new Mesh(geometry, material);
-        mesh6.position.set(86, 0, 0);
-        this.scene.add(mesh6);
-
-        const mesh7 = new Mesh(geometry, material);
-        mesh7.position.set(-86, 0, 0);
-        this.scene.add(mesh7);
-
-        // Animate loop
-        this.animate();
+        return mesh;
     }
 
     private getTextGroup(): Object3D {
