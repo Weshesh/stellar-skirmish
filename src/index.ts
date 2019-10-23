@@ -239,12 +239,19 @@ class Main {
         ]);
 
         shape.on('pointerover', function (event) {
-            shape.tint = 0xcccccc;
-            console.log(event.type, event.target); // 'click', PIXI.DisplayObject {}
+            if (shape.tint !== 2666416) {
+                shape.tint = 0xcccccc;
+            }
+        });
+
+        shape.on('mousedown', function (event) {
+            shape.tint = 0x28afb0;
         });
 
         shape.on('pointerout', function (event) {
-            shape.tint = 0xeaedec;
+            if (shape.tint !== 2666416) {
+                shape.tint = 0xeaedec;
+            }
         });
 
         return shape;

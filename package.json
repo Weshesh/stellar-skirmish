@@ -13,13 +13,11 @@
   "license": "ISC",
   "dependencies": {
     "opentype": "^0.1.2",
-    "pixi.js": "^5.1.5",
-    "three": "^0.108.0"
+    "pixi.js": "^5.1.5"
   },
   "devDependencies": {
     "@types/node": "^12.11.5",
     "@types/opentype": "0.0.4",
-    "@types/three": "^0.103.2",
     "awesome-typescript-loader": "^5.2.1",
     "typescript": "^3.6.2",
     "webpack": "^4.39.3",
