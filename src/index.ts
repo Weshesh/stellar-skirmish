@@ -239,17 +239,18 @@ class Main {
         ]);
 
         shape.on('pointerover', function (event) {
-            if (shape.tint !== 2666416) {
+            if (shape.tint !== 8767474) {
                 shape.tint = 0xcccccc;
             }
         });
 
         shape.on('mousedown', function (event) {
-            shape.tint = 0x28afb0;
+            shape.tint = 0x85c7f2;
         });
 
         shape.on('pointerout', function (event) {
-            if (shape.tint !== 2666416) {
+            console.log(shape.tint);
+            if (shape.tint !== 8767474) {
                 shape.tint = 0xeaedec;
             }
         });
