@@ -1,0 +1,28 @@
+{
+  "name": "threejs_stellar_skirmish_prototype",
+  "version": "1.0.0",
+  "description": "",
+  "main": "public/bundle.js",
+  "scripts": {
+    "webpack": "webpack",
+    "webpack-dev-server": "webpack-dev-server",
+    "dev": "webpack-dev-server",
+    "build": "webpack"
+  },
+  "author": "Arvo Saalits",
+  "license": "ISC",
+  "dependencies": {
+    "opentype": "^0.1.2",
+    "three": "^0.108.0"
+  },
+  "devDependencies": {
+    "@types/node": "^12.7.4",
+    "@types/opentype": "0.0.4",
+    "@types/three": "^0.103.2",
+    "awesome-typescript-loader": "^5.2.1",
+    "typescript": "^3.6.2",
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.7",
+    "webpack-dev-server": "^3.8.0"
+  }
+}
