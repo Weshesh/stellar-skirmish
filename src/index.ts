@@ -20,6 +20,7 @@ class Main {
         document.body.appendChild(this.app.view);
 
         this.createBoard();
+
         // Animation loop
         this.app.ticker.add((delta) => {
             // circle.position.x += delta * 0.3;
@@ -188,7 +189,6 @@ class Main {
         // group.pivot.set(group.width / 2, group.height / 2);
         group.position.set(this.app.renderer.width / 2, this.app.renderer.height / 2);
         this.app.stage.addChild(group);
-
     }
 
     getHexagon(positionX: number, positionY: number) {
