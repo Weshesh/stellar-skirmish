@@ -19,43 +19,176 @@ class Main {
         });
         document.body.appendChild(this.app.view);
 
-        // Board
+        this.createBoard();
+        // Animation loop
+        this.app.ticker.add((delta) => {
+            // circle.position.x += delta * 0.3;
+        });
+    }
+
+    private createBoard() {
         const group = new PIXI.Container();
 
+        // Rows
+        {
+            const yPos = -74 * 5;
+            const xPos = 45;
+            group.addChild(this.getHexagon(-xPos * 5, yPos));
+            group.addChild(this.getHexagon(-xPos * 3, yPos));
+            group.addChild(this.getHexagon(-xPos, yPos));
+            group.addChild(this.getHexagon(-xPos, yPos));
+            group.addChild(this.getHexagon(xPos, yPos));
+            group.addChild(this.getHexagon(xPos * 3, yPos));
+            group.addChild(this.getHexagon(xPos * 5, yPos));
+        }
 
-        // Bottom
-        group.addChild(this.getHexagon(-45 * 3, 74));
-        group.addChild(this.getHexagon(45, 74));
-        group.addChild(this.getHexagon(-45, 74));
-        group.addChild(this.getHexagon(45 * 3, 74));
-        group.addChild(this.getHexagon(45 * 5, 74));
+        {
+            const yPos = -74 * 4;
+            const xPos = 90;
+            group.addChild(this.getHexagon(-xPos * 3, yPos));
+            group.addChild(this.getHexagon(-xPos * 2, yPos));
+            group.addChild(this.getHexagon(-xPos, yPos));
+            group.addChild(this.getHexagon(0, yPos));
+            group.addChild(this.getHexagon(xPos, yPos));
+            group.addChild(this.getHexagon(xPos * 2, yPos));
+            group.addChild(this.getHexagon(xPos * 3, yPos));
+        }
 
-        // top
-        group.addChild(this.getHexagon(-45, -74));
-        group.addChild(this.getHexagon(45, -74));
-        group.addChild(this.getHexagon(45 * 3, -74));
-        group.addChild(this.getHexagon(-45 * 3, -74));
+        {
+            const yPos = -74 * 3;
+            const xPos = 45;
+            group.addChild(this.getHexagon(-xPos * 7, yPos));
+            group.addChild(this.getHexagon(-xPos * 5, yPos));
+            group.addChild(this.getHexagon(-xPos * 3, yPos));
+            group.addChild(this.getHexagon(-xPos, yPos));
+            group.addChild(this.getHexagon(-xPos, yPos));
+            group.addChild(this.getHexagon(xPos, yPos));
+            group.addChild(this.getHexagon(xPos * 3, yPos));
+            group.addChild(this.getHexagon(xPos * 5, yPos));
+            group.addChild(this.getHexagon(xPos * 7, yPos));
+        }
 
-        // Center
-        group.addChild(this.getHexagon(-90, 0));
-        group.addChild(this.getHexagon(0, 0));
-        group.addChild(this.getHexagon(90, 0));
-        group.addChild(this.getHexagon(-90 * 2, 0));
-        group.addChild(this.getHexagon(90 * 2, 0));
+        {
+            const yPos = -74 * 2;
+            const xPos = 90;
+            group.addChild(this.getHexagon(-xPos * 4, yPos));
+            group.addChild(this.getHexagon(-xPos * 3, yPos));
+            group.addChild(this.getHexagon(-xPos * 2, yPos));
+            group.addChild(this.getHexagon(-xPos, yPos));
+            group.addChild(this.getHexagon(0, yPos));
+            group.addChild(this.getHexagon(xPos, yPos));
+            group.addChild(this.getHexagon(xPos * 2, yPos));
+            group.addChild(this.getHexagon(xPos * 3, yPos));
+            group.addChild(this.getHexagon(xPos * 4, yPos));
+        }
 
-        // Bottom vol 2
-        group.addChild(this.getHexagon(0, 74 * 2));
-        group.addChild(this.getHexagon(45 * 2, 74 * 2));
-        group.addChild(this.getHexagon(45 * 4, 74 * 2));
+
+        {
+            const yPos = -74;
+            const xPos = 45;
+            group.addChild(this.getHexagon(-xPos * 9, yPos));
+            group.addChild(this.getHexagon(-xPos * 7, yPos));
+            group.addChild(this.getHexagon(-xPos * 5, yPos));
+            group.addChild(this.getHexagon(-xPos * 3, yPos));
+            group.addChild(this.getHexagon(-xPos, yPos));
+            group.addChild(this.getHexagon(-xPos, yPos));
+            group.addChild(this.getHexagon(xPos, yPos));
+            group.addChild(this.getHexagon(xPos * 3, yPos));
+            group.addChild(this.getHexagon(xPos * 5, yPos));
+            group.addChild(this.getHexagon(xPos * 7, yPos));
+            group.addChild(this.getHexagon(xPos * 9, yPos));
+        }
+
+        {
+            const yPos = 0;
+            const xPos = 90;
+            group.addChild(this.getHexagon(-xPos * 5, yPos));
+            group.addChild(this.getHexagon(-xPos * 4, yPos));
+            group.addChild(this.getHexagon(-xPos * 3, yPos));
+            group.addChild(this.getHexagon(-xPos * 2, yPos));
+            group.addChild(this.getHexagon(-xPos, yPos));
+            group.addChild(this.getHexagon(0, yPos));
+            group.addChild(this.getHexagon(xPos, yPos));
+            group.addChild(this.getHexagon(xPos * 2, yPos));
+            group.addChild(this.getHexagon(xPos * 3, yPos));
+            group.addChild(this.getHexagon(xPos * 4, yPos));
+            group.addChild(this.getHexagon(xPos * 5, yPos));
+        }
+
+        {
+            const yPos = 74;
+            const xPos = 45;
+            group.addChild(this.getHexagon(-xPos * 9, yPos));
+            group.addChild(this.getHexagon(-xPos * 7, yPos));
+            group.addChild(this.getHexagon(-xPos * 5, yPos));
+            group.addChild(this.getHexagon(-xPos * 3, yPos));
+            group.addChild(this.getHexagon(-xPos, yPos));
+            group.addChild(this.getHexagon(-xPos, yPos));
+            group.addChild(this.getHexagon(xPos, yPos));
+            group.addChild(this.getHexagon(xPos * 3, yPos));
+            group.addChild(this.getHexagon(xPos * 5, yPos));
+            group.addChild(this.getHexagon(xPos * 7, yPos));
+            group.addChild(this.getHexagon(xPos * 9, yPos));
+        }
+
+
+        {
+            const yPos = 74 * 2;
+            const xPos = 90;
+            group.addChild(this.getHexagon(-xPos * 4, yPos));
+            group.addChild(this.getHexagon(-xPos * 3, yPos));
+            group.addChild(this.getHexagon(-xPos * 2, yPos));
+            group.addChild(this.getHexagon(-xPos, yPos));
+            group.addChild(this.getHexagon(0, yPos));
+            group.addChild(this.getHexagon(xPos, yPos));
+            group.addChild(this.getHexagon(xPos * 2, yPos));
+            group.addChild(this.getHexagon(xPos * 3, yPos));
+            group.addChild(this.getHexagon(xPos * 4, yPos));
+        }
+
+        {
+            const yPos = 74 * 3;
+            const xPos = 45;
+            group.addChild(this.getHexagon(-xPos * 7, yPos));
+            group.addChild(this.getHexagon(-xPos * 5, yPos));
+            group.addChild(this.getHexagon(-xPos * 3, yPos));
+            group.addChild(this.getHexagon(-xPos, yPos));
+            group.addChild(this.getHexagon(-xPos, yPos));
+            group.addChild(this.getHexagon(xPos, yPos));
+            group.addChild(this.getHexagon(xPos * 3, yPos));
+            group.addChild(this.getHexagon(xPos * 5, yPos));
+            group.addChild(this.getHexagon(xPos * 7, yPos));
+        }
+
+
+        {
+            const yPos = 74 * 4;
+            const xPos = 90;
+            group.addChild(this.getHexagon(-xPos * 3, yPos));
+            group.addChild(this.getHexagon(-xPos * 2, yPos));
+            group.addChild(this.getHexagon(-xPos, yPos));
+            group.addChild(this.getHexagon(0, yPos));
+            group.addChild(this.getHexagon(xPos, yPos));
+            group.addChild(this.getHexagon(xPos * 2, yPos));
+            group.addChild(this.getHexagon(xPos * 3, yPos));
+        }
+
+        {
+            const yPos = 74 * 5;
+            const xPos = 45;
+            group.addChild(this.getHexagon(-xPos * 5, yPos));
+            group.addChild(this.getHexagon(-xPos * 3, yPos));
+            group.addChild(this.getHexagon(-xPos, yPos));
+            group.addChild(this.getHexagon(-xPos, yPos));
+            group.addChild(this.getHexagon(xPos, yPos));
+            group.addChild(this.getHexagon(xPos * 3, yPos));
+            group.addChild(this.getHexagon(xPos * 5, yPos));
+        }
 
         // group.pivot.set(group.width / 2, group.height / 2);
         group.position.set(this.app.renderer.width / 2, this.app.renderer.height / 2);
         this.app.stage.addChild(group);
 
-        // Animation loop
-        this.app.ticker.add((delta) => {
-            // circle.position.x += delta * 0.3;
-        });
     }
 
     getHexagon(positionX: number, positionY: number) {
