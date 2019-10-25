@@ -7,7 +7,7 @@ class Main {
 
     constructor() {
         document.body.onkeypress = ({charCode, key}) => {
-            if (charCode >= 49 && charCode <= 57 || charCode == 32 ) {
+            if (charCode >= 49 && charCode <= 54 || charCode == 32 ) {
                 switch (charCode) {
                     case 32:
                         if (this.colorKey == 0xf28590) {
