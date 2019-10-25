@@ -1,4 +1,5 @@
 import * as PIXI from 'pixi.js'
+import {Board} from "./board";
 
 class Main {
     activeKey = "1";
@@ -40,61 +41,9 @@ class Main {
     }
     
     private createBoard() {
-        const group = new PIXI.Container();
-        
-        let firstYPos = 0;
-        let firstXPos = 0;
-        let coordinate = {};
-        let yPos = 0;
-        let xPos = 0;
-        let side = 0;
-        //initiate next layer -> then loop for each side
-        let firstSet = true;
-        const xStep = 50;
-        const yStep = 75;
+        const board = Board.generate(this.app, this.getHexagon);
 
-        for (let layer = 0; layer < 6 ; layer++) {
-            group.addChild(this.getHexagon(xPos, yPos)); //the first hex
-            //yStep - to add
-            //xStep
-            if (side > 0) {
-                for (let index = 0; index < side; index++) {
-                    xPos += xStep * 2;
-                    group.addChild(this.getHexagon(xPos, yPos));
-                }
-                for (let index = 0; index < side; index++) {
-                    xPos += xStep;
-                    yPos += yStep;
-                    group.addChild(this.getHexagon(xPos, yPos));
-                }
-                for (let index = 0; index < side; index++) {
-                    xPos -= xStep;
-                    yPos += yStep;
-                    group.addChild(this.getHexagon(xPos, yPos));
-                }
-                for (let index = 0; index < side; index++) {
-                    xPos -= xStep * 2;
-                    group.addChild(this.getHexagon(xPos, yPos));
-                }
-                for (let index = 0; index < side; index++) {
-                    xPos -= xStep;
-                    yPos -= yStep;
-                    group.addChild(this.getHexagon(xPos, yPos));
-                } 
-                for (let index = 0; index < side; index++) {
-                    xPos += xStep;
-                    yPos -= yStep;
-                    group.addChild(this.getHexagon(xPos, yPos));
-                } 
-            }
-            xPos -= 50;
-            yPos -= 75;
-            side += 1;
-        }
-        
-        // group.pivot.set(group.width / 2, group.height / 2);
-        group.position.set(this.app.renderer.width / 2, this.app.renderer.height / 2);
-        this.app.stage.addChild(group);
+        this.app.stage.addChild(board);
     }
     
     getHexagon(positionX: number, positionY: number) {
