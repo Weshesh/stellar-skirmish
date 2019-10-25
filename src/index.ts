@@ -2,14 +2,27 @@ import * as PIXI from 'pixi.js'
 
 class Main {
     activeKey = "1";
+    colorKey = 0x85c7f2;
     app: PIXI.Application;
 
     constructor() {
         document.body.onkeypress = ({charCode, key}) => {
-            if (charCode >= 49 && charCode <= 57) {
-                this.activeKey = key;
-            }
-        };
+            if (charCode >= 49 && charCode <= 57 || charCode == 32 ) {
+                console.log(charCode);
+                switch (charCode) {
+                    case 32:
+                        if (this.colorKey == 0xf28590) {
+                            this.colorKey = 0x85c7f2;
+                        }
+                        else {
+                            this.colorKey = 0xf28590;
+                        }
+                        break;
+                    default:
+                        this.activeKey = key;
+                    }
+                }
+            };
 
         this.app = new PIXI.Application({
             backgroundColor: 0xFFFFFF,
@@ -235,7 +248,7 @@ class Main {
         shape.on('mousedown', (event) => {
             if (!shape.children.length) {
                 const player = shape.clone();
-                player.tint = 0x85c7f2;
+                player.tint = this.colorKey;
                 player.scale.set(0.7);
                 player.position.x += 12.5;
                 player.position.y += 13;
@@ -249,16 +262,16 @@ class Main {
                 const number = new PIXI.Text(this.activeKey || "", {
                     fontSize: 26,
                     fontWeight: 'bold',
-                    fill: 0x85c7f2
+                    fill: player.tint
                 });
-                number.tint = 0x85c7f2;
+                number.tint = player.tint;
 
                 number.pivot.set(number.width / 2, number.height / 2);
                 number.position.set(player.position.x + 28, player.position.y + 30);
 
                 shape.addChild(number);
 
-                shape.tint = 0x85c7f2;
+                shape.tint = player.tint;
 
                 return
             }
