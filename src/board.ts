@@ -1,4 +1,5 @@
 import {Container, Application} from "pixi.js";
+import {Hexagon} from "./hexagon";
 
 export namespace Board {
     const config = {
@@ -13,7 +14,7 @@ export namespace Board {
 
     export function generate(app: Application, getHexagon: any) {
         for (let layer = 0; layer < 6 ; layer++) {
-            group.addChild(getHexagon(config.xPos, config.yPos)); //the first hex
+            group.addChild(Hexagon.create(config.xPos, config.yPos)); //the first hex
             //yStep - to add
             //xStep
             if (config.side > 0) {
