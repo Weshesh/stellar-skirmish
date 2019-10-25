@@ -43,6 +43,7 @@ class Main {
         const group = new PIXI.Container();
 
         // Rows
+        /*
         {
             const yPos = -74 * 5;
             const xPos = 45;
@@ -197,6 +198,7 @@ class Main {
             group.addChild(this.getHexagon(xPos * 3, yPos));
             group.addChild(this.getHexagon(xPos * 5, yPos));
         }
+        */
 
         // group.pivot.set(group.width / 2, group.height / 2);
         group.position.set(this.app.renderer.width / 2, this.app.renderer.height / 2);
