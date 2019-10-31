@@ -14,6 +14,7 @@ class Main {
             if (charCode === 32) {
                 if (this.config.colorKey == 0xf28590) {
                     this.config.colorKey = 0x85c7f2;
+                    return;
                 }
 
                 this.config.colorKey = 0xf28590;
