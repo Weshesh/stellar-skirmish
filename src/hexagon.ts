@@ -1,5 +1,6 @@
 import {Graphics} from "pixi.js";
 import * as PIXI from "pixi.js";
+import { publicVariables} from './publicVariables';
 
 export namespace Hexagon {
     export const config = {
@@ -17,6 +18,7 @@ export namespace Hexagon {
         
         const shape = new Graphics();
         shape.lineStyle(4, 0xeaedec);
+        
         shape.moveTo(x, y - config.side)
         shape.lineTo(x + config.xStep, y - config.yStep);
         shape.lineTo(x + config.xStep, y + config.yStep);
@@ -26,12 +28,19 @@ export namespace Hexagon {
         shape.lineTo(x, y - config.side);
         shape.lineTo(x + config.xStep, y - config.yStep);
         /*
-        Could we use angles? Ex: 
+        Could we use angles(like python turtle)? Ex: 
         for (let i = 1; i < 7; i++) {
             turn 60deg;
             go forth 20px;
         }
 Cant find doc.
+
+or something like
+        	for(let i = 0; i <= 360; i+=60) {
+                xCurrent = xInterval*sin(ideg); radians?
+                yCurrent = yInterval*cos(ideg);
+                shape.lineTo(xCurrent, yCurrent);
+            }
 
         */
         shape.tint = 0xeaedec;
@@ -62,7 +71,7 @@ Cant find doc.
         shape.on('mousedown', (event) => {
             if (!shape.children.length) {
                 const player = shape.clone();
-                player.tint = this.colorKey;
+                player.tint = 0; //// NNNNNNNNNNNNNN
                 player.scale.set(0.7);
                 player.position.x += 0;
                 player.position.y += 0;
