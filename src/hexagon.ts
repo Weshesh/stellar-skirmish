@@ -3,12 +3,6 @@ import * as PIXI from "pixi.js";
 
 export namespace Hexagon {
     export const config = {
-        hexRadius: 40,
-        hexHeight: 20,
-        sideLength: 40,
-        hexRectangleHeight: 40 + 2 * 25,
-        hexRectangleWidth: 2 * 40,
-
         //Correct geometrical values
         xStep: 34.64,
         yStep: 20,
