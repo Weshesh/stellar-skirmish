@@ -4,25 +4,34 @@ import * as PIXI from "pixi.js";
 export namespace Hexagon {
     export const config = {
         hexRadius: 40,
-        hexHeight: 25,
+        hexHeight: 20,
         sideLength: 40,
         hexRectangleHeight: 40 + 2 * 25,
         hexRectangleWidth: 2 * 40,
+
+        //Correct geometrical values
+        xStep: 34.64,
+        yStep: 20,
+        side: 40,
     };
     
     export function create(positionX: number, positionY: number) {
-        const x = 0, y = 0;
+        let x = 0, y = 0;
         
         const shape = new Graphics();
         shape.lineStyle(4, 0xeaedec);
-        shape.moveTo(x + config.hexRadius, y);
-        shape.lineTo(x + config.hexRectangleWidth, y + config.hexHeight);
-        shape.lineTo(x + config.hexRectangleWidth, y + config.hexHeight + config.sideLength);
-        shape.lineTo(x + config.hexRadius, y + config.hexRectangleHeight);
-        shape.lineTo(x, y + config.sideLength + config.hexHeight);
-        shape.lineTo(x, y + config.hexHeight);
-        shape.lineTo(x + config.hexRadius, y);
-        shape.lineTo(x + config.hexRectangleWidth, y + config.hexHeight);
+        shape.lineTo(x + config.xStep, y - config.yStep);
+        shape.lineTo(x + config.xStep*2, y);
+        shape.lineTo(x + config.xStep*2, y + config.side);
+        shape.lineTo(x + config.xStep, y + config.side + config.yStep);
+        shape.lineTo(x, y + config.side);
+        shape.lineTo(x, y);
+        shape.lineTo(x + config.xStep, y - config.yStep);
+
+
+
+
+
         shape.tint = 0xeaedec;
         
         //
