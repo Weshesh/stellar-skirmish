@@ -14,17 +14,14 @@ export namespace Hexagon {
         
         const shape = new Graphics();
         shape.lineStyle(4, 0xeaedec);
+        shape.moveTo(x, y - config.side)
         shape.lineTo(x + config.xStep, y - config.yStep);
-        shape.lineTo(x + config.xStep*2, y);
-        shape.lineTo(x + config.xStep*2, y + config.side);
-        shape.lineTo(x + config.xStep, y + config.side + config.yStep);
-        shape.lineTo(x, y + config.side);
-        shape.lineTo(x, y);
+        shape.lineTo(x + config.xStep, y + config.yStep);
+        shape.lineTo(x, y + config.yStep*2);
+        shape.lineTo(x - config.xStep, y + config.yStep);
+        shape.lineTo(x - config.xStep, y - config.yStep);
+        shape.lineTo(x, y - config.side);
         shape.lineTo(x + config.xStep, y - config.yStep);
-
-
-
-
 
         shape.tint = 0xeaedec;
         
@@ -32,11 +29,11 @@ export namespace Hexagon {
         shape.interactive = true;
         shape.hitArea = new PIXI.Polygon([
             new PIXI.Point(x + config.xStep, y - config.yStep),
-            new PIXI.Point(x + config.xStep*2, y),
-            new PIXI.Point(x + config.xStep*2, y + config.side),
-            new PIXI.Point(x + config.xStep, y + config.side + config.yStep),
-            new PIXI.Point(x, y + config.side),
-            new PIXI.Point(x, y),
+            new PIXI.Point(x + config.xStep, y + config.yStep),
+            new PIXI.Point(x, y + config.yStep*2),
+            new PIXI.Point(x - config.xStep, y + config.yStep),
+            new PIXI.Point(x - config.xStep, y - config.yStep),
+            new PIXI.Point(x, y - config.side),
             new PIXI.Point(x + config.xStep, y - config.yStep),
         ]);
         
@@ -57,8 +54,8 @@ export namespace Hexagon {
                 const player = shape.clone();
                 player.tint = this.colorKey;
                 player.scale.set(0.7);
-                player.position.x += 12.5;
-                player.position.y += 13;
+                player.position.x += 0;
+                player.position.y += 0;
                 
                 // player.fill.color =  0x000000;
                 player.fill.alpha = 1;
