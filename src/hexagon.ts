@@ -7,6 +7,9 @@ export namespace Hexagon {
         xStep: 34.64,
         yStep: 20,
         side: 40,
+
+        //TODO: 
+
     };
     
     export function create(positionX: number, positionY: number) {
@@ -22,10 +25,17 @@ export namespace Hexagon {
         shape.lineTo(x - config.xStep, y - config.yStep);
         shape.lineTo(x, y - config.side);
         shape.lineTo(x + config.xStep, y - config.yStep);
+        /*
+        Could we use angles? Ex: 
+        for (let i = 1; i < 7; i++) {
+            turn 60deg;
+            go forth 20px;
+        }
+Cant find doc.
 
+        */
         shape.tint = 0xeaedec;
         
-        //
         shape.interactive = true;
         shape.hitArea = new PIXI.Polygon([
             new PIXI.Point(x + config.xStep, y - config.yStep),
