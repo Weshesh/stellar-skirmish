@@ -37,13 +37,13 @@ export namespace Hexagon {
         //
         shape.interactive = true;
         shape.hitArea = new PIXI.Polygon([
-            new PIXI.Point(x + config.hexRadius, y),
-            new PIXI.Point(x + config.hexRectangleWidth, y + config.hexHeight),
-            new PIXI.Point(x + config.hexRectangleWidth, y + config.hexHeight + config.sideLength),
-            new PIXI.Point(x + config.hexRadius, y + config.hexRectangleHeight),
-            new PIXI.Point(x, y + config.sideLength + config.hexHeight),
-            new PIXI.Point(x, y + config.hexHeight),
-            new PIXI.Point(x + config.hexRadius, y),
+            new PIXI.Point(x + config.xStep, y - config.yStep),
+            new PIXI.Point(x + config.xStep*2, y),
+            new PIXI.Point(x + config.xStep*2, y + config.side),
+            new PIXI.Point(x + config.xStep, y + config.side + config.yStep),
+            new PIXI.Point(x, y + config.side),
+            new PIXI.Point(x, y),
+            new PIXI.Point(x + config.xStep, y - config.yStep),
         ]);
         
         // Should have two different hexes, one inside the other, with the outer hex being transparent "margin"
