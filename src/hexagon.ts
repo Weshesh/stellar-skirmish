@@ -22,6 +22,7 @@ export namespace Hexagon {
         shape.lineTo(x, y + config.sideLength + config.hexHeight);
         shape.lineTo(x, y + config.hexHeight);
         shape.lineTo(x + config.hexRadius, y);
+        shape.lineTo(x + config.hexRectangleWidth, y + config.hexHeight);
         shape.tint = 0xeaedec;
         
         //
