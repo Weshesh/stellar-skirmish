@@ -13,7 +13,7 @@ class Main {
     private readonly app: PIXI.Application;
 
     constructor() {
-        document.body.onkeypress = keyboardEvents.keyPressEvent.bind(this);
+        document.body.onkeypress = keyboardEvents.keyPress.bind(this);
 
         this.app = new PIXI.Application({
             backgroundColor: 0xFFFFFF,

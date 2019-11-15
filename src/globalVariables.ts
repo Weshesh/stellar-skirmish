@@ -2,18 +2,18 @@ export namespace globalVariables {
     export class Variables {
         private data = {
             activeKey: "1",
-            activeColor: 0x85c7f2
-        };
-        setActiveKey(input: string) {
+            activeColor: "0x85c7f2"
+        }
+        public setActiveKey(input) {
             this.data.activeKey = input;
         }
-        setActiveColor(input: number) {
+        public setActiveColor(input) {
             this.data.activeColor = input;
         }
-        getActiveKey() {
+        public getActiveKey() {
             return this.data.activeColor;
         }
-        getActiveColor() {
+        public getActiveColor() {
             return this.data.activeColor;
         }
     }
