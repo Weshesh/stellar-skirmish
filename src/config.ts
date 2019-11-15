@@ -1,4 +1,4 @@
-import {Hexagon} from "./hexagon";
+import {Hexagon} from "./hexagon/hexagon";
 
 export namespace Config {
     export const yPos = 0;

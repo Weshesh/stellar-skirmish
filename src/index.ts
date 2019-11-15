@@ -5,11 +5,6 @@ import {keyboardEvents} from "./keyboardEvents";
 
 
 class Main {
-    private config = {
-        activeKey: "1",
-        colorKey: 0x85c7f2
-    };
-
     private readonly app: PIXI.Application;
 
     constructor() {

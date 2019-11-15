@@ -1,6 +1,6 @@
 import {Graphics} from "pixi.js";
 import * as PIXI from "pixi.js";
-import { globalVariables} from './globalVariables';
+import { globalVariables} from '.././globalVariables';
 
 export namespace Hexagon {
     export const config = {
@@ -56,15 +56,23 @@ or something like
             new PIXI.Point(x + config.xStep, y - config.yStep),
         ]);
         
-        // Should have two different hexes, one inside the other, with the outer hex being transparent "margin"
-        
-        
         shape.pivot.set(shape.width / 2, shape.height / 2);
         shape.position.set(positionX, positionY);
         
         shape.on('pointerover', function (event) {
+            switch(shape.tint) {
+                case 0xf28590:
+                        shape.tint = 0xd97781;
+
+                break;
+                case 0x85c7f2:
+                        shape.tint = 0x77b3d9;
+                break;
+                default:
+                    shape.tint = 0xcccccc;
+                    break;
+            }
             if (shape.tint !== 8767474 && !shape.children.length) {
-                shape.tint = 0xcccccc;
             }
         });
         
@@ -81,11 +89,12 @@ or something like
                 shape.addChild(player);
                 
                 
-                const number = new PIXI.Text(this.activeKey || "", {
+                const number = new PIXI.Text(globalVariables.getActiveKey() || "", {
                     fontSize: 26,
                     fontWeight: 'bold',
                     fill: player.tint
                 });
+                
                 number.tint = player.tint;
                 
                 number.pivot.set(number.width / 2, number.height / 2);
@@ -98,7 +107,7 @@ or something like
                 return
             }
             
-            shape.tint = globalVariables.getActiveColor();
+            shape.tint = 0xcccccc;
             
             for (const index in shape.children) {
                 shape.children[index].destroy();
@@ -107,8 +116,16 @@ or something like
         });
         
         shape.on('pointerout', function (event) {
-            if (shape.tint !== 8767474 && !shape.children.length) {
-                shape.tint = 0xeaedec;
+            switch(shape.tint) {
+                case 0xd97781:
+                        shape.tint = 0xf28590;
+                break;
+                case 0x77b3d9:
+                        shape.tint = 0x85c7f2;
+                break;
+                default:
+                    shape.tint = 0xeaedec;
+                    break;
             }
         });
         
