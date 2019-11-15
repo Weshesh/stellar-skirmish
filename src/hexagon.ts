@@ -1,6 +1,6 @@
 import {Graphics} from "pixi.js";
 import * as PIXI from "pixi.js";
-import { publicVariables} from './publicVariables';
+import { globalVariables} from './globalVariables';
 
 export namespace Hexagon {
     export const config = {

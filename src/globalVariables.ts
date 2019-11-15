@@ -1,4 +1,4 @@
-export namespace publicVariables {
+export namespace globalVariables {
     export class Variables {
         private data = {
             activeKey: "1",
@@ -16,6 +16,5 @@ export namespace publicVariables {
         getActiveColor() {
             return this.data.activeColor;
         }
-    var kana = new this.getActiveColor();
     }
 }
