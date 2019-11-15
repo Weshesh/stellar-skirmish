@@ -1,5 +1,5 @@
 import {Container, Application} from "pixi.js";
-import {Hexagon} from "./hexagon";
+import {Hexagon} from "./hexagon/hexagon";
 import {Config} from "./config";
 
 
