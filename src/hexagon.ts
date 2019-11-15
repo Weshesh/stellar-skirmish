@@ -71,12 +71,11 @@ or something like
         shape.on('mousedown', (event) => {
             if (!shape.children.length) {
                 const player = shape.clone();
-                player.tint = 0; //// NNNNNNNNNNNNNN
+                player.tint = globalVariables.getActiveColor();
                 player.scale.set(0.7);
                 player.position.x += 0;
-                player.position.y += 0;
-                
-                // player.fill.color =  0x000000;
+                player.position.y += 0;                
+                player.fill.color = globalVariables.getActiveColor();
                 player.fill.alpha = 1;
                 
                 shape.addChild(player);
@@ -99,7 +98,7 @@ or something like
                 return
             }
             
-            shape.tint = 0xcccccc;
+            shape.tint = globalVariables.getActiveColor();
             
             for (const index in shape.children) {
                 shape.children[index].destroy();

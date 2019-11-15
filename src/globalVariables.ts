@@ -1,18 +1,18 @@
 export namespace globalVariables {
-    let variables = {
-        activeKey: "1",
-        activeColor: "0x85c7f2"
-    }
+    
+    let activeKey: string= "1";
+    let activeColor: number = 0x85c7f2;
+    
     export function setActiveKey(input) {
-        this.variables.activeKey = input;
+        this.activeKey = input;
     }
     export function setActiveColor(input) {
-        this.variables.activeColor = input;
+        this.activeColor = input;
     }
     export function getActiveKey() {
-        return this.variables.activeColor;
+        return this.activeColor;
     }
     export function getActiveColor() {
-        return this.variables.activeColor;
+        return this.activeColor;
     }
 }
