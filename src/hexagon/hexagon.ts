@@ -1,7 +1,7 @@
-import { Graphics } from "pixi.js";
 import * as PIXI from "pixi.js";
-import { globalConstants } from '../values/globalConstants';
-import { globalVariables } from '../values/globalVariables';
+import {Graphics} from "pixi.js";
+import {globalConstants} from '../values/globalConstants';
+import {globalVariables} from '../values/globalVariables';
 
 export namespace Hexagon {
     export const config = {
@@ -47,22 +47,20 @@ export namespace Hexagon {
         shape.pivot.set(shape.width / 2, shape.height / 2);
         shape.position.set(positionX, positionY);
 
+        switch (shape.tint) {
+            case globalConstants.colors.red:
+                shape.tint = globalConstants.colors.redHighlight;
+                break;
+            case globalConstants.colors.blue:
+                shape.tint = globalConstants.colors.blueHighlight;
+                break;
+            case globalConstants.colors.grey:
+                break;
+
+        }
         shape.on('pointerover', function (event) {
-            switch (shape.tint) {
-                case globalConstants.colors.red:
-                    console.log("HL A");
-
-                    shape.tint = globalConstants.colors.redHighlight;
-                    break;
-                case globalConstants.colors.blue:
-                    console.log("HL B");
-
-                    shape.tint = globalConstants.colors.blueHighlight;
-                    break;
-                default:
-                    console.log("HL Default");
-
-                    shape.tint = globalConstants.colors.greyHighlight;
+            if (!shape.children.length) {
+                shape.tint = globalConstants.colors.greyHighlight;
             }
         });
 
@@ -97,28 +95,29 @@ export namespace Hexagon {
                 return
             }
 
-            shape.tint = globalVariables.getActiveColor();
-
             for (const index in shape.children) {
+
                 shape.children[index].destroy();
                 shape.children.splice(Number(index), 1);
             }
+
+            shape.tint = globalConstants.colors.greyHighlight;
         });
 
         shape.on('pointerout', function (event) {
             switch (shape.tint) {
                 case globalConstants.colors.red || globalConstants.colors.redHighlight:
-                    console.log("1");
                     shape.tint = globalConstants.colors.red;
                     break;
                 case globalConstants.colors.blue || globalConstants.colors.blueHighlight:
-                    console.log("2");
-
                     shape.tint = globalConstants.colors.blue;
                     break;
                 default:
-                    console.log("default");
-                    shape.tint = globalConstants.colors.grey;
+                    if (!shape.children.length) {
+                        shape.tint = globalConstants.colors.grey;
+                    }
+
+
             }
         });
 
