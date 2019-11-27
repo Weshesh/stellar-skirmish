@@ -33,14 +33,13 @@ export namespace Hexagon {
         const shape = new Graphics();
         shape.lineStyle(4, 0xeaedec);
         coordinatesGenerator().forEach(element =>
-        shape.lineTo(element.x, element.y));
+            shape.lineTo(element.x, element.y));
         shape.tint = globalConstants.colors.grey;
         shape.interactive = true;
 
-        shape.hitArea = new PIXI.Polygon([]);
-/*         shape.hitArea.push(coordinatesGenerator().map(element =>
-            new PIXI.Point(element.x, element.y);
-        ); */
+        shape.hitArea = new PIXI.Polygon(coordinatesGenerator().map(
+            element => new PIXI.Point(element.x, element.y)
+        ));
 
         shape.pivot.set(shape.width / 2, shape.height / 2);
         shape.position.set(positionX, positionY);
@@ -67,13 +66,12 @@ export namespace Hexagon {
                 const player = shape.clone();
                 player.tint = globalVariables.getActiveColor();
                 player.scale.set(0.7);
-                player.position.x += 0;
-                player.position.y += 0;
+                player.position.x += config.xStep / 4;
+                player.position.y += config.yStep / 4;
                 player.fill.color = globalVariables.getActiveColor();
                 player.fill.alpha = 1;
 
                 shape.addChild(player);
-
 
                 const number = new PIXI.Text(globalVariables.getActiveKey() || "", {
                     fontSize: 26,
@@ -114,11 +112,8 @@ export namespace Hexagon {
                     if (!shape.children.length) {
                         shape.tint = globalConstants.colors.grey;
                     }
-
-
             }
         });
-
         return shape;
     }
 }
