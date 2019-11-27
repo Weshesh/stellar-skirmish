@@ -6,31 +6,30 @@ import { globalVariables } from '../values/globalVariables';
 export namespace Hexagon {
     export const config = {
         //TODO: name correctly, consistently with geometrical values
-        xStep: 34.64,
-        yStep: 20,
-        side: 40,
+        xAxisStep: 34.64,
         hexagonDiameter: 40,
-        circleStart: Math.PI * 2 / 6,
-        sineStep: Math.PI / 3,
+        hexagonSide: Math.PI / 3,
         fullCircle: Math.PI * 2,
     };
 
     function coordinatesGenerator() {
-        let coordinates = [], xAxis = 0, yAxis = 0;
-        for (let index = config.circleStart; index <= config.fullCircle + config.sineStep; index += config.sineStep) {
-            xAxis += Math.sin(index) * 40;
-            yAxis -= Math.cos(index + Math.PI) * 40;
+        let coordinates = [], xAxis, yAxis;
+        for (let index = config.hexagonSide; index <= config.fullCircle + config.hexagonSide; index += config.hexagonSide) {
+            xAxis = Math.sin(index) * 40;
+            yAxis = Math.cos(index + Math.PI) * 40;
             coordinates.push({
                 x: xAxis,
                 y: yAxis,
             })
         }
+        console.log(coordinates);
         return coordinates;
     };
 
     export function create(positionX: number, positionY: number) {
         const shape = new Graphics();
         shape.lineStyle(4, 0xeaedec);
+        shape.moveTo(Math.sin(config.hexagonSide) * 40, Math.cos(config.hexagonSide + Math.PI) * 40);
         coordinatesGenerator().forEach(element =>
             shape.lineTo(element.x, element.y));
         shape.tint = globalConstants.colors.grey;
@@ -65,8 +64,8 @@ export namespace Hexagon {
                 const player = shape.clone();
                 player.tint = globalVariables.getActiveColor();
                 player.scale.set(0.7);
-                player.position.x += config.xStep / 4;
-                player.position.y += config.yStep / 4;
+                player.position.x = 0;
+                player.position.y = 0;
                 player.fill.color = globalVariables.getActiveColor();
                 player.fill.alpha = 1;
 
