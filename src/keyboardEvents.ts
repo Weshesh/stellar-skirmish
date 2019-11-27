@@ -16,7 +16,7 @@ export namespace keyboardEvents {
                 }
             }
             else {
-                globalVariables.setActiveKey(charCode);
+                globalVariables.setActiveKey(key);
                 return;
             }
         }
