@@ -4,17 +4,18 @@ export namespace globalVariables {
 
     let activeKey: string = "1";
     let activeColor: number = globalConstants.colors.blue;
+    console.log(activeColor);
     
     export function setActiveKey(input: string) {
-        this.activeKey = input;
+        activeKey = input;
     }
     export function setActiveColor(input: number) {
-        this.activeColor = input;
+        activeColor = input;
     }
     export function getActiveKey() {
-        return this.activeKey;
+        return activeKey;
     }
     export function getActiveColor() {
-        return this.activeColor;
+        return activeColor;
     }
 }
