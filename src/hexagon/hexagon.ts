@@ -86,7 +86,7 @@ export namespace Hexagon {
                 number.tint = player.tint;
 
                 number.pivot.set(number.width / 2, number.height / 2);
-                number.position.set(player.position.x + 28, player.position.y + 30);
+                number.position.set(player.position.x, player.position.y);
 
                 shape.addChild(number);
 

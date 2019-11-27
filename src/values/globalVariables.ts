@@ -18,6 +18,3 @@ export namespace globalVariables {
         return this.activeColor;
     }
 }
-
-
-
