@@ -8,4 +8,3 @@ export namespace globalConstants {
         grey: 0xeaedec,
     }
 }
-// 15396332
