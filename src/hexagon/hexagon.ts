@@ -16,20 +16,19 @@ export namespace Hexagon {
     };
 
     function coordinatesGenerator() {
-        let coordinates = [], xStart = 0, yStart = 0;
+        let coordinates = [], xAxis = 0, yAxis = 0;
         for (let index = config.circleStart; index <= config.fullCircle + config.sineStep; index += config.sineStep) {
-            xStart += Math.sin(index) * 40;
-            yStart += Math.cos(index + Math.PI) * 40;
+            xAxis += Math.sin(index) * 40;
+            yAxis -= Math.cos(index + Math.PI) * 40;
             coordinates.push({
-                x: xStart,
-                y: yStart,
+                x: xAxis,
+                y: yAxis,
             })
         }
         return coordinates;
     };
 
     export function create(positionX: number, positionY: number) {
-        let x = 0, y = 0;
         const shape = new Graphics();
         shape.lineStyle(4, 0xeaedec);
         coordinatesGenerator().forEach(element =>
